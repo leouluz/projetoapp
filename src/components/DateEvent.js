@@ -37,38 +37,51 @@ import { TouchableOpacity, View, StyleSheet, FlatList, Text } from 'react-native
           data:18,
           dia:'Dom'
         },
+        {
+          id:8,
+          data:'19',
+          dia:'Seg'
+        },
+        {
+          id:9,
+          data:20,
+          dia:'Ter'
+        },
+        {
+          id:10,
+          data:21,
+          dia:'Qua'
+        },
   ];
 
   function Item({data, dia}) {
     return (
-      <TouchableOpacity style={styles.cardHeader}>
-        <Text style={styles.dataText}>{data}</Text>
-        <Text style={styles.text}>{dia}</Text>
-      </TouchableOpacity>
+      <View>
+        <TouchableOpacity style={styles.cardHeader}>
+          <Text style={styles.dataText}>{data}</Text>
+          <Text style={styles.text}>{dia}</Text>
+        </TouchableOpacity>
+      </View>
     )
   }
   export default function ListEvent() {
     return (
-      <View style={styles.headerDate}>
-
         <FlatList
+         contentContainerStyle={styles.headerDate}
+         horizontal={true}
           data={DATE}
           renderItem={({ item }) => <Item data={item.data} dia={item.dia} />}
           keyExtractor={item => item.id}
         />
-        </View>
     );
   }
 
   const styles = StyleSheet.create({
-
+    headerDate:{
+      flexDirection:'row',
+    },
     text:{
       color:'#fff',
-      fontWeight:'bold',
-      fontSize:18
-    },
-    textSelect:{
-      color:'#102733',
       fontWeight:'bold',
       fontSize:18
     },
@@ -80,28 +93,9 @@ import { TouchableOpacity, View, StyleSheet, FlatList, Text } from 'react-native
       marginLeft:8,
       borderRadius:15,
     },
-    cardHeaderSelect:{
-      width:55,
-      height:80,
-      backgroundColor:'#ffb832',
-      alignItems:'center',
-      justifyContent:'center',
-      borderRadius:15
-    },
     dataText:{
       fontSize:24,
       fontWeight:'bold',
       color:'#fff'
-    },
-    dataTextSelect:{
-      color:'#102733',
-      fontSize:24,
-      fontWeight:'bold'
-    },
-    headerDate:{
-      flex:1,
-      flexDirection:'row',
-      justifyContent:'space-around',
-      marginTop:10,
     },
   });
